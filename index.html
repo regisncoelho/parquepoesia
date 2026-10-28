@@ -15,54 +15,22 @@
        CSS VARIABLES & THEME SETUP
        ========================================== */
     :root {
-    /* Paleta de cores extraída da logo */
-    --green-dark: #0f4027;      /* Verde Floresta Principal */
-    --green-medium: #1b5e3a;    /* Verde Secundário */
-    --pink-ipe: #e27189;        /* Rosa das Flores */
-    --blue-river: #0091ca;      /* Azul do Rio e Montanhas */
-    --red-detail: #c0392b;      /* Vermelho do detalhe 'em' */
-    
-    /* Cores de Fundo e Texto (Modo Claro) */
-    --bg-gradient: linear-gradient(135deg, #eef7f2 0%, #e0f2f1 100%);
-    --card-bg: rgba(255, 255, 255, 0.95);
-    --card-border: rgba(15, 64, 39, 0.12);
-    --text-primary: #0a2919;
+    --bg-gradient: linear-gradient(135deg, #eef7f2 0%, #e8f4f0 100%);
+    --card-bg: #ffffff;
+    --text-primary: #0f4027;
     --text-secondary: #3d5e4d;
-    
-    /* Estilos dos Botões de Link */
-    --btn-bg: #ffffff;
-    --btn-border: #1b5e3a;
-    --btn-text: #0f4027;
-    --btn-hover-bg: #1b5e3a;
-    --btn-hover-text: #ffffff;
-    
-    /* Efeitos */
-    --shadow-sm: 0 4px 12px rgba(15, 64, 39, 0.08);
-    --shadow-hover: 0 8px 24px rgba(15, 64, 39, 0.16);
-    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Modo Escuro (Dark Mode) */
-body.dark-theme {
-    --bg-gradient: linear-gradient(135deg, #07170e 0%, #0d2919 100%);
-    --card-bg: rgba(15, 35, 23, 0.9);
-    --card-border: rgba(226, 113, 137, 0.2);
-    --text-primary: #f0f7f3;
-    --text-secondary: #a3c2b0;
-    
-    --btn-bg: rgba(27, 94, 58, 0.3);
-    --btn-border: rgba(226, 113, 137, 0.4);
-    --btn-text: #ffffff;
-    --btn-hover-bg: var(--pink-ipe);
-    --btn-hover-text: #ffffff;
+    --accent: #e27189;
+    --accent-hover: #c0392b;
+    --border-color: rgba(15, 64, 39, 0.12);
+    --shadow: 0 10px 25px -5px rgba(15, 64, 39, 0.08);
+    --card-hover: #f4faf6;
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -72,167 +40,91 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 16px;
-    transition: var(--transition);
+    padding: 20px;
 }
 
-/* Container do Cartão */
 .container {
     width: 100%;
-    max-width: 420px;
+    max-width: 480px;
     background: var(--card-bg);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--card-border);
-    border-radius: 28px;
-    padding: 32px 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    position: relative;
-    transition: var(--transition);
-}
-
-/* Botão Flutuante de Tema */
-.theme-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: transparent;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-}
-
-.theme-toggle:hover {
-    color: var(--pink-ipe);
-    transform: rotate(15deg);
-}
-
-/* Cabeçalho e Perfil */
-.header {
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 32px 20px;
+    box-shadow: var(--shadow);
     text-align: center;
-    margin-bottom: 28px;
 }
 
-.profile-avatar {
-    width: 110px;
-    height: 110px;
-    margin: 0 auto 16px;
-    position: relative;
-}
-
-.profile-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.profile-img {
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
-    background: #ffffff;
-    padding: 6px;
-    box-shadow: var(--shadow-sm);
-    border: 2px solid var(--pink-ipe);
+    object-fit: cover;
+    margin-bottom: 16px;
+    border: 3px solid var(--accent);
 }
 
-.title {
-    font-size: 1.5rem;
+.profile-name {
+    font-size: 1.25rem;
     font-weight: 700;
+    margin-bottom: 6px;
     color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
 }
 
-.verified-icon {
-    color: var(--blue-river);
-    fill: currentColor;
-}
-
-.bio {
-    font-size: 0.92rem;
+.profile-bio {
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    margin-top: 6px;
+    margin-bottom: 24px;
     line-height: 1.4;
 }
 
-/* Lista de Links */
-.links-container {
+.links-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
-}
-
-.link-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 20px;
-    background: var(--btn-bg);
-    border: 1.5px solid var(--btn-border);
-    border-radius: 16px;
-    color: var(--btn-text);
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-}
-
-.link-card:hover {
-    background: var(--btn-hover-bg);
-    color: var(--btn-hover-text);
-    border-color: transparent;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-}
-
-.link-card:hover .link-icon {
-    color: var(--btn-hover-text);
-}
-
-.link-content {
-    display: flex;
-    align-items: center;
     gap: 12px;
 }
 
-.link-icon {
-    color: var(--green-medium);
-    transition: var(--transition);
+.link-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(15, 64, 39, 0.02);
 }
 
-/* Destaque / Badge do Link */
-.badge {
-    font-size: 0.72rem;
-    padding: 4px 8px;
-    border-radius: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.link-item:hover {
+    background: var(--card-hover);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(15, 64, 39, 0.08);
 }
 
-.badge-featured {
-    background: var(--pink-ipe);
-    color: #ffffff;
+.link-item svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--text-secondary);
+    transition: fill 0.2s ease;
 }
 
-.badge-new {
-    background: var(--blue-river);
-    color: #ffffff;
+.link-item:hover svg {
+    fill: var(--accent);
 }
 
-/* Rodapé */
 .footer {
-    text-align: center;
-    margin-top: 28px;
+    margin-top: 32px;
     font-size: 0.8rem;
     color: var(--text-secondary);
 }
 
 .footer a {
-    color: var(--pink-ipe);
+    color: var(--accent);
     text-decoration: none;
     font-weight: 600;
 }
