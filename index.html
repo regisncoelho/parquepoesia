@@ -659,6 +659,73 @@
       .link-card { padding: 12px 12px; }
       .link-icon { width: 42px; height: 42px; }
     }
+
+    /* ==========================================
+       VERSÃO PARA COMPUTADOR
+       Tudo aqui só vale em telas a partir de
+       1024px de largura. No celular e em telas
+       menores nada muda: continua o layout atual.
+       ========================================== */
+    @media (min-width: 1024px) {
+      :root { --logo-max: 270px; }
+
+      body {
+        align-items: center;
+        padding: 56px 40px 170px;
+      }
+
+      .garca { width: 120px; top: 11vh; }
+
+      /* Cartão largo em duas colunas:
+         perfil à esquerda, conteúdo à direita */
+      .container {
+        max-width: 1080px;
+        padding: 30px 48px 26px;
+        border-radius: 40px;
+        display: grid;
+        grid-template-columns: 5fr 7fr;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+          "topo    topo"
+          "perfil  conteudo"
+          "redes   conteudo"
+          "rodape  rodape";
+        column-gap: 56px;
+        align-items: start;
+      }
+
+      .top-bar { grid-area: topo; margin-bottom: 14px; }
+      .profile-section { grid-area: perfil; margin-bottom: 20px; }
+      .social-row { grid-area: redes; justify-self: center; margin-bottom: 0; gap: 14px; }
+      .links-list, .portfolio-conteudo { grid-area: conteudo; }
+
+      .footer {
+        grid-area: rodape;
+        width: 100%;
+        margin-top: 26px;
+        padding-top: 18px;
+        border-top: 1px solid var(--card-border);
+      }
+
+      /* Perfil */
+      .profile-bio { font-size: 1.04rem; max-width: 36ch; }
+      .profile-handle { font-size: 1.12rem; }
+
+      /* Links maiores, com mais respiro */
+      .links-list { gap: 16px; margin-bottom: 0; }
+      .link-card { padding: 18px 22px; border-radius: 22px; }
+      .link-icon { width: 54px; height: 54px; border-radius: 16px; }
+      .link-icon svg { width: 27px; height: 27px; }
+      .link-title { font-size: 1.14rem; }
+      .link-subtitle { font-size: 0.9rem; }
+    }
+
+    /* Telas bem grandes */
+    @media (min-width: 1600px) {
+      :root { --logo-max: 300px; }
+      .container { max-width: 1200px; padding: 36px 56px 30px; }
+      .garca { width: 140px; }
+    }
   </style>
 </head>
 <body>
@@ -885,7 +952,8 @@
     /* 2. Flores de sapucaia caindo */
     const cores = ['#EC8AA3', '#F4A9BC', '#C9578F', '#A34E86', '#D9729A'];
     const petalas = document.getElementById('petalas');
-    for (let i = 0; i < 14; i++) {
+    const qtdPetalas = window.matchMedia('(min-width: 1024px)').matches ? 26 : 14;
+    for (let i = 0; i < qtdPetalas; i++) {
       const p = document.createElement('span');
       p.className = 'petala';
       const tam = 8 + Math.random() * 8;
